@@ -1,0 +1,152 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e8f5e9;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #00BF63;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    height: 100px; 
+}
+
+/* filtro dos produtos */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+#filtro-btn {
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 120px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 10;
+    right: 0; 
+}
+
+.dropdown-menu button {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+    background-color: #f1f1f1;
+}
+
+/* botão de voltar */
+.btn-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+
+.btn-topo:hover {
+    background-color: #2e7d32;
+}
+
+/* div dos produtos */
+.lista-produtos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.produtos {
+    max-width: 100%;
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.produto-oculto {
+    display: none;
+}
+
+h1 {
+    text-align: left;
+    font-size: 80%;
+    font-family: sans-serif;
+}
+
+h2 {
+    color: #1b5e20;
+    text-align: center;
+}
+
+/* botão de visualizar mais */
+.ver-mais {
+    display: block;
+    width: 100%;
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.ver-mais:hover {
+    background-color: #2e7d32;
+}
+
+/* responsividade */
+@media (max-width: 768px) {
+    .produtos {
+        max-width: 90%;
+        padding: 10px;
+    }
+
+    .produto-box img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ver-mais {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
