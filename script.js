@@ -1,20 +1,38 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // visualizar mais produtos
+document.addEventListener("DOMContentLoaded", function () {
+    const listasProdutos = document.querySelectorAll(".lista-produtos");
+
+    listasProdutos.forEach(lista => {
+        const produtos = lista.querySelectorAll(".produto");
+        // Só os 3 primeiros de cada section aparecem 
+        produtos.forEach((produto, index) => {
+            if (index >= 3) { 
+                produto.style.display = "none";
+                produto.classList.add("produto-oculto");
+            }
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
     const botoesVerMais = document.querySelectorAll(".ver-mais");
 
     botoesVerMais.forEach(botao => {
-        botao.addEventListener("click", function() {
+        botao.addEventListener("click", function () {
             const listaProdutos = this.previousElementSibling;
             const produtosOcultos = listaProdutos.querySelectorAll(".produto-oculto");
 
             if (produtosOcultos.length > 0) {
-                produtosOcultos.forEach(produto => produto.classList.remove("produto-oculto"));
+                produtosOcultos.forEach(produto => {
+                    produto.classList.remove("produto-oculto");
+                    produto.style.display = "flex"; 
+                });
                 this.textContent = "Visualizar menos";
             } else {
                 const todosProdutos = listaProdutos.querySelectorAll(".produto");
                 todosProdutos.forEach((produto, index) => {
                     if (index >= 3) {
                         produto.classList.add("produto-oculto");
+                        produto.style.display = "none"; 
                     }
                 });
                 this.textContent = "Visualizar mais";
@@ -28,14 +46,14 @@ document.addEventListener("DOMContentLoaded", function() {
         menu.style.display = menu.style.display === "block" ? "none" : "block";
     });
 
-    // funcionalidade de fechar o menu
+    //  fechar o menu 
     document.addEventListener("click", function (event) {
         let dropdown = document.querySelector(".dropdown");
         if (!dropdown.contains(event.target)) {
             document.getElementById("dropdown-menu").style.display = "none";
         }
     });
-
+    // filtro dos protudos
     document.querySelectorAll(".filtro-opcao").forEach((botao) => {
         botao.addEventListener("click", function () {
             let categoria = this.getAttribute("data-categoria").trim().toLowerCase(); 

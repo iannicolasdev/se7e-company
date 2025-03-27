@@ -104,6 +104,36 @@ header {
     display: none;
 }
 
+/* layout dos produtos */
+.produto {
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    padding: 15px;
+    border-bottom: 1px solid #ddd; 
+}
+
+.produto img {
+    width: 100px; 
+    height: auto;
+    border-radius: 8px;
+}
+
+.info-produto {
+    display: flex;
+    flex-direction: column; 
+}
+
+.info-produto h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.info-produto p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
 h1 {
     text-align: left;
     font-size: 80%;
