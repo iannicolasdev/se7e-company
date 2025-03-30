@@ -107,16 +107,19 @@ document.addEventListener("DOMContentLoaded", function () {
             modalImg.src = imgSrc;
             modalDesc.innerHTML = "";
             modalDesc.appendChild(infoProduto);
+            document.body.classList.add("no-scroll");
         });
     });
 
     fechar.addEventListener("click", function () {
         modal.style.display = "none";
+        document.body.classList.remove("no-scroll"); 
     });
 
     modal.addEventListener("click", function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
+            document.body.classList.remove("no-scroll"); // ajeita o bug de travar a tela
         }
     });
 });
