@@ -49,6 +49,8 @@ header {
     overflow: hidden;
     z-index: 10;
     right: 0; 
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 .dropdown-menu button {
