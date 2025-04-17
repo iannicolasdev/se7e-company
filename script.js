@@ -1,3 +1,4 @@
+// Organização de visualização dos produtos
 document.addEventListener("DOMContentLoaded", function () {
     const listasProdutos = document.querySelectorAll(".lista-produtos");
 
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
+// Função de visualizar mais produtos
 document.addEventListener("DOMContentLoaded", function () {
     const botoesVerMais = document.querySelectorAll(".ver-mais");
 
@@ -39,42 +40,56 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+});
+// Função de filtro dos produtos
+document.addEventListener("DOMContentLoaded", function () {
+    const filtroBtn = document.getElementById("filtro-btn");
+    const menuDropdown = document.getElementById("dropdown-menu");
 
-    // filtro dos produtos 
-    document.getElementById("filtro-btn").addEventListener("click", function () {
-        let menu = document.getElementById("dropdown-menu");
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    // Abrir/Fechar dropdown
+    filtroBtn.addEventListener("click", function () {
+        menuDropdown.style.display = menuDropdown.style.display === "block" ? "none" : "block";
     });
 
-    //  fechar o menu 
+    // Fecha se clicar fora do dropdown
     document.addEventListener("click", function (event) {
-        let dropdown = document.querySelector(".dropdown");
-        if (!dropdown.contains(event.target)) {
-            document.getElementById("dropdown-menu").style.display = "none";
+        const dropdownWrapper = document.querySelector(".dropdown");
+        if (!dropdownWrapper.contains(event.target)) {
+            menuDropdown.style.display = "none";
         }
     });
-    // filtro dos protudos
-    document.querySelectorAll(".filtro-opcao").forEach((botao) => {
+
+    // Cria botões de filtro das categorias (h2)
+    const categorias = Array.from(document.querySelectorAll("section.produtos h2"))
+        .map(h2 => h2.textContent.trim());
+
+    categorias.forEach(categoria => {
+        const botao = document.createElement("button");
+        botao.classList.add("filtro-opcao");
+        botao.setAttribute("data-categoria", categoria);
+        botao.textContent = categoria;
+        menuDropdown.appendChild(botao);
+
         botao.addEventListener("click", function () {
-            let categoria = this.getAttribute("data-categoria").trim().toLowerCase(); 
-            let elementoCategoria = Array.from(document.querySelectorAll("h2"))
-                .find(h2 => h2.textContent.trim().toLowerCase() === categoria); 
-    
-            if (elementoCategoria) {
-                elementoCategoria.scrollIntoView({ behavior: "smooth", block: "start" });
+            const cat = this.getAttribute("data-categoria").trim().toLowerCase();
+            const alvo = Array.from(document.querySelectorAll("h2"))
+                .find(h2 => h2.textContent.trim().toLowerCase() === cat);
+
+            if (alvo) {
+                alvo.scrollIntoView({ behavior: "smooth", block: "start" });
             } else {
-                console.warn("Categoria não encontrada:", categoria);
+                console.warn("Categoria não encontrada:", cat);
             }
-    
-            document.getElementById("dropdown-menu").style.display = "none";
+
+            menuDropdown.style.display = "none";
         });
-    }); 
+    });
 });
 
-// botão de voltar 
+// Botão de voltar ao topo da página
 document.addEventListener("DOMContentLoaded", function () {
     let btnTopo = document.getElementById("btnTopo");
-
+    // Exibição do botão de acordo com o scroll do Usuário
     window.addEventListener("scroll", function () {
         if (window.scrollY > 200) {
             btnTopo.style.display = "block";
@@ -87,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
-
+// MODAL (Visualização maior das imagens e mais descrições dos produtos)
 document.addEventListener("DOMContentLoaded", function () {
     let modal = document.getElementById("modal");
     let modalImg = document.getElementById("modal-img");
@@ -119,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.addEventListener("click", function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
-            document.body.classList.remove("no-scroll"); // ajeita o bug de travar a tela
+            document.body.classList.remove("no-scroll"); // Bloqueio da tela quando o Modal estiver ativo
         }
     });
 });
