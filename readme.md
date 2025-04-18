@@ -18,7 +18,7 @@ Catálogo digital desenvolvido sob medida para a loja **Se7e Company**, com foco
 Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/se7e-company.git
+git clone https://github.com/iannicolasdev/se7e-company.git
 ```
 Abra o arquivo index.html no seu navegador.
 
